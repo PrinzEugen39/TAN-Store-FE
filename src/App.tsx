@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AppLayout from "./layout/AppLayout";
 import LandingPage from "./pages/LandingPage";
 import PageNotFound from "./pages/PageNotFound";
+import ProductList from "./pages/ProductList";
 
 const client = new QueryClient({
   defaultOptions: {
@@ -22,6 +23,7 @@ export default function App() {
           <Route element={<AppLayout />}>
             <Route index element={<Navigate replace to="welcome" />} />
             <Route path="welcome" element={<LandingPage />} />
+            <Route path="products" element={<ProductList />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
