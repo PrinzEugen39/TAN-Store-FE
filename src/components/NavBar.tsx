@@ -10,7 +10,7 @@ export default function NavBar() {
         <div className="py-1 border-b border-blue-100 sm:py-2">
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-5">
-              <Link to="/welcome">
+              <Link to="/welcome" onClick={() => window.scrollTo(0, 0)}>
                 <img src="/TANlogo.png" alt="logo" className="h-10 sm:h-12" />
               </Link>
               <div>
