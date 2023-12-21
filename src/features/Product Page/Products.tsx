@@ -1,18 +1,24 @@
+import LoadingSkeleton from "@/components/LoadingSkeleton";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { useProductsGet } from "@/hooks/useProductsGet";
+import Pagination from "@/components/Pagination";
 import {
   Card,
   CardDescription,
   CardFooter,
   CardTitle,
 } from "@/components/ui/card";
+import { useProductsGet } from "@/hooks/useProductsGet";
 import { formatPrice } from "@/lib/utils";
-import Pagination from "@/components/Pagination";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import ProductFilterTabMobile from "./ProductFilterTabMobile";
+import ProductsFilterTab from "./ProductsFilterTab";
 
 export default function Products() {
   const { productData, isLoading } = useProductsGet();
+
+  const { products } = productData?.data || {};
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
@@ -21,40 +27,61 @@ export default function Products() {
     setSearchParams(searchParams);
   }, []);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   return (
-    <MaxWidthWrapper>
-      <div>ProductList</div>
-      <div className="flex items-center justify-end">
-        <div className="grid grid-cols-2 gap-5 md:grid-cols-3">
-          {productData?.map((product) => (
-            <Card key={product.id} className="flex flex-col w-56 gap-3">
-              <img
-                src={product.image[0]}
-                alt="product"
-                className="object-cover w-full rounded-t-lg h-fit"
-              />
-              <div className="mx-3">
-                <CardTitle className="text-base font-medium truncate">
-                  {product.name}
-                </CardTitle>
-                <CardDescription className="mt-3 text-sm font-medium">
-                  Only {product.qty} left in stock - order soon
-                </CardDescription>
+    <>
+      <MaxWidthWrapper>
+        <div className="sticky top-[7%] sm:hidden">
+          <ProductFilterTabMobile />
+        </div>
+        <div className="flex justify-center gap-5 py-10">
+          <div className="hidden max-w-xs sm:block sm:flex-1">
+            <ProductsFilterTab />
+          </div>
+          <div className="sm:flex sm:items-center sm:justify-end sm:flex-2">
+            <div className="grid grid-cols-2 gap-5 sm:grid-cols-3">
+              {isLoading ? (
+                <>
+                  <LoadingSkeleton />
+                  <LoadingSkeleton />
+                  <LoadingSkeleton />
+                  <LoadingSkeleton />
+                  <LoadingSkeleton />
+                  <LoadingSkeleton />
+                </>
+              ) : (
+                <>
+                  {products?.map((product) => (
+                    <Card
+                      key={product.id}
+                      className="flex flex-col w-40 gap-3 sm:w-56"
+                    >
+                      <img
+                        src={product.image[0]}
+                        alt="product"
+                        className="object-cover w-full rounded-t-lg h-40 sm:h-[14rem]"
+                      />
+                      <div className="mx-3">
+                        <CardTitle className="text-sm font-medium truncate sm:text-base">
+                          {product.name}
+                        </CardTitle>
+                        <CardDescription className="mt-3 text-xs font-medium sm:text-sm">
+                          Only {product.qty} left in stock - order soon
+                        </CardDescription>
+                      </div>
+                      <CardFooter className="px-3">
+                        <span>{formatPrice(product.price)}</span>
+                      </CardFooter>
+                    </Card>
+                  ))}
+                </>
+              )}
+              <div className="col-span-2 sm:col-span-3">
+                <Pagination />
               </div>
-              <CardFooter className="px-3">
-                <span>{formatPrice(product.price)}</span>
-              </CardFooter>
-            </Card>
-          ))}
-          <div className="col-span-3">
-            <Pagination />
+            </div>
           </div>
         </div>
-      </div>
-    </MaxWidthWrapper>
+      </MaxWidthWrapper>
+    </>
   );
 }

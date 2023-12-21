@@ -1,21 +1,21 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { useSearchParams } from "react-router-dom";
+import { useProductsLength } from "@/hooks/useProductsGet";
+
 
 export default function Pagination() {
+  const { productsLength } = useProductsLength();
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = Number(searchParams.get("page"));
 
-  // const pageCount = Math.ceil(Number(searchParams.get("limit")) / 15);
-  // console.log(pageCount);
-  console.log(currentPage);
+  const pagex = Math.ceil(productsLength / 9);
 
   function nextPage() {
-    if (currentPage >= 1) {
-      const next = currentPage + 1;
-      searchParams.set("page", next.toString());
-      setSearchParams(searchParams);
-    }
+    if (currentPage === pagex) return;
+    const next = currentPage + 1;
+    searchParams.set("page", next.toString());
+    setSearchParams(searchParams);
   }
 
   function prevPage() {
@@ -28,7 +28,11 @@ export default function Pagination() {
   return (
     <div className="flex flex-col items-center justify-center w-full gap-3">
       <p className="ml-3 text-sm">
-        Showing <span>1</span> to <span>9</span> of <span>15</span> results
+        Showing <span>{currentPage === 1 ? 1 : (currentPage - 1) * 9}</span> to{" "}
+        <span>
+          {currentPage * 9 > productsLength ? productsLength : currentPage * 9}
+        </span>{" "}
+        of <span>{productsLength}</span> results
       </p>
 
       <div className="flex gap-2 pb-6">

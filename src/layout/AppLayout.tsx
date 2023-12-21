@@ -5,7 +5,9 @@ import { Outlet } from "react-router-dom";
 export default function AppLayout() {
   return (
     <>
-      <NavBar />
+      <div className="sticky top-0 bg-white">
+        <NavBar />
+      </div>
       <Outlet />
       <Footer />
     </>
