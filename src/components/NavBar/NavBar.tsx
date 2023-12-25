@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import MaxWidthWrapper from "./MaxWidthWrapper";
+import MaxWidthWrapper from "../MaxWidthWrapper";
 import NavBarMenu from "./NavBarMenu";
 import NavBarRight from "./NavBarRight";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 export default function NavBar() {
   const navigate = useNavigate();
@@ -22,7 +22,9 @@ export default function NavBar() {
             </Button>
             <div>
               <p className="hidden text-xl font-semibold sm:block">
-                The Acupuncture <span className="text-blue-600">Needs</span>
+                <span className="text-blue-600">T</span>he{" "}
+                <span className="text-blue-600">A</span>cupuncture{" "}
+                <span className="text-blue-600">N</span>eeds
               </p>
               <p className="font-semibold text-md sm:hidden ">TAN Store</p>
             </div>

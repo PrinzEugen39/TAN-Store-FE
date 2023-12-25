@@ -5,6 +5,8 @@ import AppLayout from "./layout/AppLayout";
 import LandingPage from "./pages/LandingPage";
 import PageNotFound from "./pages/PageNotFound";
 import ProductList from "./pages/ProductList";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 
 const client = new QueryClient({
   defaultOptions: {
@@ -25,6 +27,8 @@ export default function App() {
             <Route path="welcome" element={<LandingPage />} />
             <Route path="products" element={<ProductList />} />
           </Route>
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>

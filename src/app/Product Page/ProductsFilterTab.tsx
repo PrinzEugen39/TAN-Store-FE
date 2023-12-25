@@ -1,13 +1,11 @@
 import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import ProductsSearch from "./ProductsSearch";
 
 export default function ProductsFilterTab() {
   return (
@@ -16,28 +14,37 @@ export default function ProductsFilterTab() {
         <CardTitle>What do you need?</CardTitle>
       </CardHeader>
       <CardContent>
-        <Accordion type="multiple" className="w-full" defaultValue={["item-1", "item-2", "item-3"]}>
+        <Accordion
+          type="multiple"
+          className="w-full"
+          defaultValue={["item-1", "item-2", "item-3"]}
+        >
           <AccordionItem value="item-1">
             <AccordionTrigger>Search</AccordionTrigger>
             <AccordionContent className="flex justify-center gap-1 px-1 pt-1">
-              <Input placeholder="Search..." />
-              <Button variant={"secondary"}><Search size={20} className="text-blue-600"/></Button>
+              <ProductsSearch />
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
             <AccordionTrigger>Categories</AccordionTrigger>
             <AccordionContent>
               <ul>
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
+                <li>Needles</li>
+                <li>Moksa</li>
+                <li>Electric device</li>
               </ul>
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
             <AccordionTrigger>Sort</AccordionTrigger>
             <AccordionContent>
-              ayayayayayaya
+              <ul>
+                <li>Price</li>
+                <li>Rating</li>
+                <li>Popularity</li>
+                <li>Discount</li>
+                <li>Relevancy</li>
+              </ul>
             </AccordionContent>
           </AccordionItem>
         </Accordion>

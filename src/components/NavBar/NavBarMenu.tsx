@@ -5,7 +5,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button, buttonVariants } from "./ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import { ArrowRightFromLine, Menu, ShoppingCart } from "lucide-react";
 export default function NavBarMenu() {
   return (

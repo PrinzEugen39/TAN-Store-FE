@@ -1,5 +1,5 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { buttonVariants, Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Featured } from "@/data/Featured";
 import { ArrowDownToLine, CheckCircle, Leaf } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -37,8 +37,15 @@ export default function Welcome() {
             Electrical Nerve, and more.
           </p>
           <div className="flex flex-col gap-4 mt-6 sm:flex-row">
-            <Link to="/products" className={buttonVariants()}>Browse our products</Link>
-            <Button variant={"outline"}>Login to buy</Button>
+            <Link to="/products" className={buttonVariants()}>
+              Browse our products
+            </Link>
+            <Link
+              to="/signin"
+              className={buttonVariants({ variant: "outline" })}
+            >
+              Sign in to buy
+            </Link>
           </div>
         </div>
       </MaxWidthWrapper>

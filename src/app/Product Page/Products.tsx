@@ -11,7 +11,7 @@ import { useProductsGet } from "@/hooks/useProductsGet";
 import { formatPrice } from "@/lib/utils";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import ProductFilterTabMobile from "./ProductFilterTabMobile";
+import ProductsFilterTabMobile from "./ProductsFilterTabMobile";
 import ProductsFilterTab from "./ProductsFilterTab";
 
 export default function Products() {
@@ -30,8 +30,8 @@ export default function Products() {
   return (
     <>
       <MaxWidthWrapper>
-        <div className="sticky top-[7%] sm:hidden">
-          <ProductFilterTabMobile />
+        <div className="sticky top-14 sm:hidden">
+          <ProductsFilterTabMobile />
         </div>
         <div className="flex justify-center gap-5 py-10">
           <div className="hidden max-w-xs sm:block sm:flex-1">

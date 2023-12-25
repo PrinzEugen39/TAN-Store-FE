@@ -3,7 +3,6 @@ import { Button } from "./ui/button";
 import { useSearchParams } from "react-router-dom";
 import { useProductsLength } from "@/hooks/useProductsGet";
 
-
 export default function Pagination() {
   const { productsLength } = useProductsLength();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -36,14 +35,22 @@ export default function Pagination() {
       </p>
 
       <div className="flex gap-2 pb-6">
-        <Button className="p-0 pr-3" onClick={prevPage}>
-          <ChevronLeft />
+        <Button
+          variant={"outline"}
+          className="p-0 pr-3 text-primary"
+          onClick={prevPage}
+        >
+          <ChevronLeft className="text-blue-600" />
           <span>prev</span>
         </Button>
 
-        <Button className="p-0 pl-3" onClick={nextPage}>
+        <Button
+          variant={"outline"}
+          className="p-0 pl-3 text-primary"
+          onClick={nextPage}
+        >
           <span>next</span>
-          <ChevronRight />
+          <ChevronRight className="text-blue-600" />
         </Button>
       </div>
     </div>
