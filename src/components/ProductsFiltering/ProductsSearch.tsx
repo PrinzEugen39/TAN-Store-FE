@@ -4,7 +4,7 @@ import { Search, XCircle } from "lucide-react";
 import { ChangeEvent, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-export default function ProductsSearch() {
+export default function ProductsFTMSearch({ classname }: { classname?: string }) {
   const [searchField, setSearchField] = useState<string>("");
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -18,7 +18,7 @@ export default function ProductsSearch() {
     setSearchParams(searchParams);
   }
   return (
-    <div>
+    <div className={classname}>
       <div className="flex gap-2">
         <Input
           placeholder="Search..."
@@ -32,7 +32,7 @@ export default function ProductsSearch() {
       </div>
       <div>
         {searchField && (
-          <div className="mt-2 rounded-md bg-slate-200 w-fit">
+          <div className="rounded-md sm:mt-2 bg-slate-200 w-fit">
             <button
               onClick={resetSearch}
               className={buttonVariants({
@@ -41,7 +41,7 @@ export default function ProductsSearch() {
                 className: "w-fit px-3 gap-2",
               })}
             >
-              <XCircle size={20} color="red"/>
+              <XCircle size={20} color="red" />
               Reset
             </button>
           </div>

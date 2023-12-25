@@ -5,7 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import ProductsSearch from "./ProductsSearch";
+import ProductsSearch from "../../components/ProductsFiltering/ProductsSearch";
 
 export default function ProductsFilterTab() {
   return (
