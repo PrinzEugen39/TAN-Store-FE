@@ -3,6 +3,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* width */
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px rgb(248, 248, 248);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(200, 200, 200);
+  border-radius: 10px;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

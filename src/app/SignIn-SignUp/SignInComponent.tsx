@@ -1,10 +1,31 @@
+import FormRow from "@/components/FormRow";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { useLogin } from "@/hooks/useLogin";
 import { cn } from "@/lib/utils";
 import { ArrowRightToLine } from "lucide-react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+
+type FormValues = {
+  email: string;
+  password: string;
+};
 
 export default function SignInComponent() {
   const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>();
+
+  const { userLogin, isPending, isSuccess } = useLogin();
+
+  const onSubmit: SubmitHandler<FormValues> = (loginData) => {
+    userLogin(loginData);
+    if (isSuccess) navigate("/welcome");
+  };
+
   return (
     <div className="flex items-center justify-center h-screen px-10 sm:w-screen bg-gray-50 sm:px-16 md:px-32 font-inter">
       <div className="flex flex-col sm:grid sm:grid-cols-2">
@@ -34,43 +55,53 @@ export default function SignInComponent() {
           />
         </div>
         <div className="relative flex flex-col flex-1 max-w-lg px-8 pt-6 pb-8 mb-4 bg-gradient-to-r from-gray-50 to-sky-50 rounded-r-3xl">
-        <div className="absolute w-[300px] left-24 top-10 sm:hidden">
-          <img
-            src="/girl-work-on-laptop.png"
-            alt="girlWork"
-            className="w-[240px] sm:w-[360px]"
-          />
-        </div>
+          <div className="absolute w-[300px] left-24 top-10 sm:hidden">
+            <img
+              src="/girl-work-on-laptop.png"
+              alt="girlWork"
+              className="w-[240px] sm:w-[360px]"
+            />
+          </div>
           <div className="z-10 pt-28 sm:pt-0">
-            <form className="flex flex-col ">
-              <label
-                htmlFor="email"
-                className="mb-2 text-sm font-bold uppercase md:text-md text-grey-darkest"
+            <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+              <FormRow label="Email" error={errors?.email?.message?.toString()}>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="you@example.com"
+                  className="px-3 py-2 mb-4 border text-grey-darkest"
+                  {...register("email", {
+                    required: "Please enter an email",
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "Please enter a valid email address",
+                    },
+                  })}
+                />
+              </FormRow>
+              <FormRow
+                label="Password"
+                error={errors?.password?.message?.toString()}
               >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                placeholder="you@example.com"
-                className="px-3 py-2 mb-4 border text-grey-darkest"
-              />
-              <label
-                htmlFor="password"
-                className="mb-2 text-sm font-bold uppercase md:text-md text-grey-darkest"
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                placeholder="Your password"
-                className="px-3 py-2 mb-4 border text-grey-darkest"
-              />
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="you@example.com"
+                  className="px-3 py-2 mb-4 border text-grey-darkest"
+                  {...register("password", {
+                    required: "Please enter fill this field",
+                    minLength: {
+                      value: 8,
+                      message: "Password must be at least 8 characters",
+                    },
+                  })}
+                />
+              </FormRow>
               <Button
                 variant={"outline"}
                 type="submit"
                 className="px-4 py-2 my-4 font-semibold text-md"
+                disabled={isPending}
               >
                 Sign In
               </Button>

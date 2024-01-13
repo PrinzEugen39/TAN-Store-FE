@@ -7,7 +7,16 @@ import {
 } from "@/components/ui/sheet";
 import { Button, buttonVariants } from "../ui/button";
 import { ArrowRightFromLine, Menu, ShoppingCart } from "lucide-react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import API from "@/hooks/API";
 export default function NavBarMenu() {
+  const hasUser = useSelector((state: RootState) => state.auth);
+
+  async function handleLogout() {
+    await API.get("users/logout");
+    window.location.reload();
+  }
   return (
     <Sheet>
       <SheetTrigger>
@@ -41,13 +50,24 @@ export default function NavBarMenu() {
             </div>
           </div>
           <div className="flex flex-col gap-3">
-            <Button className="flex items-center justify-center w-full gap-3" variant={"outline"}>
-              <span>Go to dashboard</span>
-              <ArrowRightFromLine />
-            </Button>
-            <Button className="w-full" variant={"destructive"}>
-              Logout
-            </Button>
+            {hasUser.role === "admin" && (
+              <Button
+                className="flex items-center justify-center w-full gap-3"
+                variant={"outline"}
+              >
+                <span>Go to dashboard</span>
+                <ArrowRightFromLine />
+              </Button>
+            )}
+            {hasUser.id !== "" && (
+              <Button
+                className="w-full"
+                variant={"destructive"}
+                onClick={handleLogout}
+              >
+                Logout
+              </Button>
+            )}
           </div>
         </div>
       </SheetContent>

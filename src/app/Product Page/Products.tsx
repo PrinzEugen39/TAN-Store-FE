@@ -10,7 +10,7 @@ import {
 import { useProductsGet } from "@/hooks/useProductsGet";
 import { formatPrice } from "@/lib/utils";
 import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import ProductsFilterTabMobile from "./ProductsFilterTabMobile";
 import ProductsFilterTab from "./ProductsFilterTab";
 
@@ -53,21 +53,25 @@ export default function Products() {
                   {products?.map((product) => (
                     <Card
                       key={product.id}
-                      className="flex flex-col w-40 gap-3 sm:w-56"
+                      className="flex flex-col justify-between w-40 h-full gap-3 sm:w-56"
                     >
-                      <img
-                        src={product.image[0]}
-                        alt="product"
-                        className="object-cover w-full rounded-t-lg h-40 sm:h-[14rem]"
-                      />
-                      <div className="mx-3">
-                        <CardTitle className="text-sm font-medium truncate sm:text-base">
-                          {product.name}
-                        </CardTitle>
-                        <CardDescription className="mt-3 text-xs font-medium sm:text-sm">
-                          Only {product.qty} left in stock - order soon
-                        </CardDescription>
-                      </div>
+                      <Link to={`/products/${product.slug}`}>
+                        <img
+                          src={product.image[0]}
+                          alt="product"
+                          className="object-cover w-full rounded-t-lg h-40 sm:h-[14rem]"
+                        />
+                        <div className="mx-3">
+                          <CardTitle className="text-sm font-medium truncate sm:text-base">
+                            {product.name}
+                          </CardTitle>
+                          {product.qty <= 100 && (
+                            <CardDescription className="mt-3 text-xs font-medium sm:text-sm">
+                              Only {product.qty} left in stock - order soon
+                            </CardDescription>
+                          )}
+                        </div>
+                      </Link>
                       <CardFooter className="px-3">
                         <span>{formatPrice(product.price)}</span>
                       </CardFooter>

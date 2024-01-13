@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { useSearchParams } from "react-router-dom";
 import API from "./API";
+import { useParams } from "react-router-dom";
 
 interface Product {
   name: string;
@@ -12,38 +12,28 @@ interface Product {
   slug: string;
 }
 
-interface ProductData {
+interface ProductDetail {
   status: string;
-  results: number;
   data: {
-    products: Product[];
+    product: Product;
   };
 }
 
-export function useProductsGet() {
-  const [searchParams] = useSearchParams();
-
-  const page = searchParams.get("page");
-  const limit = searchParams.get("limit");
-  const name = searchParams.get("name");
-
+export function useProductsDetail() {
+  const { slug } = useParams();
   const {
-    data: productData,
+    data: ProductDetail,
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["products", page, limit],
+    queryKey: ["products", slug],
     queryFn: async () => {
-      const { data } = await API.get(
-        name === ""
-          ? `/products?page=${page}&limit=${limit}&name=${name}`
-          : `/products?page=${page}&limit=${limit}`
-      );
-      return data as ProductData;
+      const { data } = await API.get(`/products/detail/${slug}`);
+      return data as ProductDetail;
     },
   });
 
-  return { productData, isLoading, error };
+  return { ProductDetail, isLoading, error };
 }
 export function useProductsLength() {
   const {

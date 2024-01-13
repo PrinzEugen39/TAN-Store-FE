@@ -1,7 +1,9 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { buttonVariants } from "@/components/ui/button";
 import { Featured } from "@/data/Featured";
+import { RootState } from "@/redux/store";
 import { ArrowDownToLine, CheckCircle, Leaf } from "lucide-react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const perks = [
@@ -23,7 +25,10 @@ const perks = [
       "We've pledged 1% of sales to the preservation and restoration of the natural environment. ",
   },
 ];
+
 export default function Welcome() {
+  const hasUser = useSelector((state: RootState) => state.auth);
+
   return (
     <>
       <MaxWidthWrapper>
@@ -40,12 +45,14 @@ export default function Welcome() {
             <Link to="/products" className={buttonVariants()}>
               Browse our products
             </Link>
-            <Link
-              to="/signin"
-              className={buttonVariants({ variant: "outline" })}
-            >
-              Sign in to buy
-            </Link>
+            {hasUser.id === "" && (
+              <Link
+                to="/signin"
+                className={buttonVariants({ variant: "outline" })}
+              >
+                Sign in to buy
+              </Link>
+            )}
           </div>
         </div>
       </MaxWidthWrapper>
