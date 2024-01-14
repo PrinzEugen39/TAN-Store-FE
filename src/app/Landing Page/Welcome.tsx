@@ -5,6 +5,7 @@ import { RootState } from "@/redux/store";
 import { ArrowDownToLine, CheckCircle, Leaf } from "lucide-react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 const perks = [
   {
@@ -110,6 +111,32 @@ export default function Welcome() {
           </div>
         </MaxWidthWrapper>
       </section>
+      <div className="flex justify-between p-10 bg-gray-100 border-t border-gray-200">
+        <div className="flex-1 mr-10 bg-gray-500 rounded-xl font-inter">
+          Our location
+        </div>
+        <div className="flex-1">
+          <MapContainer
+            center={[-6.1731877,106.8262221]}
+            zoom={16}
+            scrollWheelZoom={false}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://tile.openstreetmap.de/{z}/{x}/{y}.png"
+            />
+            <Marker position={[-6.1731877,106.8262221]}>
+              <Popup>
+                Our physical store location:
+                <br />
+                Gang JIUN
+                <br />
+                Jagakarsa
+              </Popup>
+            </Marker>
+          </MapContainer>
+        </div>
+      </div>
     </>
   );
 }

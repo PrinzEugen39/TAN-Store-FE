@@ -479,6 +479,11 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-primitive" "1.0.3"
 
+"@react-leaflet/core@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@react-leaflet/core/-/core-2.1.0.tgz#383acd31259d7c9ae8fb1b02d5e18fe613c2a13d"
+  integrity sha512-Qk7Pfu8BSarKGqILj4x7bCSZ1pjuAPZ+qmRwH5S7mDS91VSbVVsJSrW4qA+GPrro8t69gFYVMWb1Zc4yFmPiVg==
+
 "@reduxjs/toolkit@^2.0.1":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@reduxjs/toolkit/-/toolkit-2.0.1.tgz#0a5233c1e35c1941b03aece39cceade3467a1062"
@@ -656,10 +661,22 @@
   dependencies:
     "@tanstack/query-core" "5.14.1"
 
+"@types/geojson@*":
+  version "7946.0.13"
+  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.13.tgz#e6e77ea9ecf36564980a861e24e62a095988775e"
+  integrity sha512-bmrNrgKMOhM3WsafmbGmC+6dsF2Z308vLFsQ3a/bT8X8Sv5clVYpPars/UPq+sAaJP+5OoLAYgwbkS5QEJdLUQ==
+
 "@types/json-schema@^7.0.12":
   version "7.0.15"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.15.tgz#596a1747233694d50f6ad8a7869fcb6f56cf5841"
   integrity sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==
+
+"@types/leaflet@^1.9.8":
+  version "1.9.8"
+  resolved "https://registry.yarnpkg.com/@types/leaflet/-/leaflet-1.9.8.tgz#32162a8eaf305c63267e99470b9603b5883e63e8"
+  integrity sha512-EXdsL4EhoUtGm2GC2ZYtXn+Fzc6pluVgagvo2VC1RHWToLGlTRwVYoDpqS/7QXa01rmDyBjJk3Catpf60VMkwg==
+  dependencies:
+    "@types/geojson" "*"
 
 "@types/node@^20.10.4":
   version "20.10.4"
@@ -1526,6 +1543,11 @@ keyv@^4.5.3:
   dependencies:
     json-buffer "3.0.1"
 
+leaflet@^1.9.4:
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.9.4.tgz#23fae724e282fa25745aff82ca4d394748db7d8d"
+  integrity sha512-nxS1ynzJOmOlHp+iL3FyWqK89GtNL8U8rvlMOsQdTTssxZwCXh8N2NB3GDQOL+YR3XnWyZAxwQixURb+FA74PA==
+
 levn@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/levn/-/levn-0.4.1.tgz#ae4562c007473b932a6200d403268dd2fffc6ade"
@@ -1839,6 +1861,13 @@ react-hook-form@^7.49.3:
   version "7.49.3"
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.49.3.tgz#576a4567f8a774830812f4855e89f5da5830435c"
   integrity sha512-foD6r3juidAT1cOZzpmD/gOKt7fRsDhXXZ0y28+Al1CHgX+AY1qIN9VSIIItXRq1dN68QrRwl1ORFlwjBaAqeQ==
+
+react-leaflet@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/react-leaflet/-/react-leaflet-4.2.1.tgz#c300e9eccaf15cb40757552e181200aa10b94780"
+  integrity sha512-p9chkvhcKrWn/H/1FFeVSqLdReGwn2qmiobOQGO3BifX+/vV/39qhY8dGqbdcPh1e6jxh/QHriLXr7a4eLFK4Q==
+  dependencies:
+    "@react-leaflet/core" "^2.1.0"
 
 react-redux@^9.0.4:
   version "9.0.4"
