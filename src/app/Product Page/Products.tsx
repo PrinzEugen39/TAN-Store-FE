@@ -15,6 +15,7 @@ import ProductsFilterTabMobile from "./ProductsFilterTabMobile";
 import ProductsFilterTab from "./ProductsFilterTab";
 
 export default function Products() {
+  document.title = "TAN Store | Products";
   const { productData, isLoading } = useProductsGet();
 
   const { products } = productData?.data || {};

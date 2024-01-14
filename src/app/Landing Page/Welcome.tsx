@@ -1,20 +1,11 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import OurLocation from "@/components/Welcome/OurLocation";
 import { buttonVariants } from "@/components/ui/button";
 import { Featured } from "@/data/Featured";
 import { RootState } from "@/redux/store";
-import {
-  ArrowDownToLine,
-  CheckCircle,
-  Leaf,
-  MapPin,
-  MapPinIcon,
-} from "lucide-react";
+import { ArrowDownToLine, CheckCircle, Leaf } from "lucide-react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import LocationBadgeTop from "@/components/Welcome/LocationBadgeTop";
-import LocationBadgeBottom from "@/components/Welcome/LocationBadgeBottom";
-import OurLocation from "@/components/Welcome/OurLocation";
 
 const perks = [
   {
@@ -38,6 +29,8 @@ const perks = [
 
 export default function Welcome() {
   const hasUser = useSelector((state: RootState) => state.auth);
+
+  document.title = "TAN Store | Welcome";
 
   return (
     <>

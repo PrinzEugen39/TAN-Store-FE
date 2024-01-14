@@ -6,7 +6,7 @@ import LocationBadgeTop from "./LocationBadgeTop";
 export default function OurLocation() {
   return (
     <section className="flex flex-col-reverse items-center justify-center gap-10 p-10 bg-gray-500 border-t border-gray-200 md:flex-row">
-      <div className="relative z-[1] bg-gradient-to-b from-gray-100 to-white rounded-md shadow-xs h-80 w-96 flex items-center justify-center px-10">
+      <div className=" relative z-[1] bg-gradient-to-b from-gray-100 to-white rounded-md shadow-xs h-80 w-[22rem] md:w-96 flex items-center justify-center px-10">
         <LocationBadgeTop />
         <LocationBadgeBottom />
         <div className="flex flex-col items-center gap-5">

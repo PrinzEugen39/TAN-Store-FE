@@ -1,11 +1,14 @@
+import { authCheck, setAuth } from "@/redux/reducers/AuthReducers";
 import { useMutation } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import API from "./API";
-import { authCheck, setAuth } from "@/redux/reducers/AuthReducers";
+import { AxiosError } from "axios";
+
+interface ErrorResponse {
+  message: string;
+}
 
 export function useLogin() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const {
@@ -28,10 +31,9 @@ export function useLogin() {
       console.log(result.data.user);
       dispatch(setAuth(result.data.user));
       dispatch(authCheck(result.data.user));
-      navigate("/");
     },
-    onError: (err: any) => {
-      console.log(err.response.data.message);
+    onError: (err: AxiosError<ErrorResponse>) => {
+      console.log(err.response?.data?.message);
     },
   });
 
