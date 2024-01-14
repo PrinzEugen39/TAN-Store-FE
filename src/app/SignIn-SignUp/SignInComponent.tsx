@@ -66,6 +66,7 @@ export default function SignInComponent() {
             <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
               <FormRow label="Email" error={errors?.email?.message?.toString()}>
                 <input
+                  autoComplete="on"
                   type="email"
                   id="email"
                   placeholder="you@example.com"
@@ -84,6 +85,7 @@ export default function SignInComponent() {
                 error={errors?.password?.message?.toString()}
               >
                 <input
+                  autoComplete="on"
                   type="password"
                   id="password"
                   placeholder="you@example.com"
