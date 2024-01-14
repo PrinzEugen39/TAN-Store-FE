@@ -1,30 +1,47 @@
-# React + TypeScript + Vite
+## About TAN Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TAN Store is an online shop that mainly sells acupuncture equipment such as needles, moksa, and KWD device. Client can signup, signin, add things to their cart and make payments.
 
-Currently, two official plugins are available:
+### Technology Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [ReactJS](https://react.dev/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Tanstack Query 5](https://tanstack.com/query/v5/)
+- [React Hook Form](https://www.react-hook-form.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [ShadCN UI](https://ui.shadcn.com/)
+- [React Leaflet](https://react-leaflet.js.org/)
+- [Axios](https://github.com/axios/axios)
 
-## Expanding the ESLint configuration
+<!-- GETTING STARTED -->
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Getting Started
 
-- Configure the top-level `parserOptions` property like this:
+### Installation
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- Clone This Repository
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+`https://github.com/PrinzEugen39/TAN-Store-FE.git`
+
+- Install Module
+
+`yarn`
+
+### Executing program
+
+- Run this project with `yarn dev`.
+
+<!-- RELATED PROJECT -->
+
+## Related Project
+
+- [TAN Store Backend](https://github.com/PrinzEugen39/TAN-Store-BE.git)
+
+<!-- CONTACT INFO -->
+
+## Contact Info
+
+Contributors names and contact info:
+
+1. Najmuddin Habib
+- [LinkedIn](www.linkedin.com/in/najmuddin-habib)

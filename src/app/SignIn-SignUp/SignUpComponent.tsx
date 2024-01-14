@@ -28,6 +28,7 @@ export default function SignInComponent() {
     userSignUp(signupData);
     if (isSuccess) navigate("/welcome");
   };
+  
   return (
     <div className="flex items-center justify-center h-screen px-10 sm:w-screen bg-gray-50 sm:px-16 md:px-32 font-inter">
       <div className="flex flex-col sm:grid sm:grid-cols-2">

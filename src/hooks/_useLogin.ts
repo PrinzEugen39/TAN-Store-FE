@@ -1,8 +1,8 @@
-import { authCheck, setAuth } from "@/redux/reducers/AuthReducers";
+import { setAuth } from "@/redux/reducers/AuthReducers";
 import { useMutation } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import { useDispatch } from "react-redux";
 import API from "./API";
-import { AxiosError } from "axios";
 
 interface ErrorResponse {
   message: string;
@@ -28,9 +28,7 @@ export function useLogin() {
       return data;
     },
     onSuccess: (result) => {
-      console.log(result.data.user);
       dispatch(setAuth(result.data.user));
-      dispatch(authCheck(result.data.user));
     },
     onError: (err: AxiosError<ErrorResponse>) => {
       console.log(err.response?.data?.message);
