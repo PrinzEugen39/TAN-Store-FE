@@ -1,19 +1,14 @@
 import { SignUpValue } from "@/app/SignIn-SignUp/SignUpComponent";
 import { useMutation } from "@tanstack/react-query";
-import API from "./API";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setAuth } from "@/redux/reducers/AuthReducers";
 import { AxiosError } from "axios";
+import API from "./API";
+import toast from "react-hot-toast";
 
 interface ErrorResponse {
   message: string;
 }
 
 export function useSignUp() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   const {
     mutate: userSignUp,
     isPending,
@@ -25,11 +20,15 @@ export function useSignUp() {
       return data;
     },
     onSuccess: (result) => {
-      dispatch(setAuth(result.data.user));
-      navigate("/welcome");
+      console.log(result);
+      const successMessage = result.message || "Sign up successful";
+      toast.success(successMessage);
     },
     onError: (err: AxiosError<ErrorResponse>) => {
       console.log(err.response?.data?.message);
+      const errorMessage = err.response?.data?.message || "An error occurred"; // Provide a default message if 'message' is undefined
+
+      toast.error(errorMessage);
     },
   });
 

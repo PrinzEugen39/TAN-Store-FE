@@ -15,7 +15,7 @@ export type SignUpValue = {
 
 export default function SignInComponent() {
   const navigate = useNavigate();
-  const { userSignUp, isPending, isSuccess } = useSignUp();
+  const { userSignUp, isPending } = useSignUp();
 
   const {
     register,
@@ -26,7 +26,6 @@ export default function SignInComponent() {
 
   const onSubmit: SubmitHandler<SignUpValue> = (signupData) => {
     userSignUp(signupData);
-    if (isSuccess) navigate("/welcome");
   };
   
   return (

@@ -14,7 +14,7 @@ import { RootState } from "@/redux/store";
 
 export default function NavBarRight() {
   const hasUser = useSelector((state: RootState) => state.auth);
-  console.log(hasUser);
+  const name = hasUser.name.split(" ")[0];
 
   return (
     <NavigationMenu>
@@ -51,7 +51,7 @@ export default function NavBarRight() {
             </Link>
           ) : (
             <p className="font-semibold text-blue-500">
-              {hasUser.name.charAt(0).toUpperCase() + hasUser.name.slice(1)}
+              {name.charAt(0).toUpperCase() + name.slice(1)}
             </p>
           )}
         </NavigationMenuItem>

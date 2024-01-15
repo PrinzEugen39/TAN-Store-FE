@@ -19,11 +19,10 @@ export default function SignInComponent() {
     formState: { errors },
   } = useForm<FormValues>();
 
-  const { userLogin, isPending, isSuccess } = useLogin();
+  const { userLogin, isPending } = useLogin();
 
   const onSubmit: SubmitHandler<FormValues> = (loginData) => {
     userLogin(loginData);
-    if (isSuccess) navigate("/welcome");
   };
 
   return (

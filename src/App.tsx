@@ -13,6 +13,8 @@ import API from "./hooks/API";
 import { useEffect } from "react";
 import { authCheck } from "./redux/reducers/AuthReducers";
 import { RootState } from "./redux/store";
+import EmailVerify from "./pages/EmailVerify";
+import { Toaster } from "react-hot-toast";
 
 const client = new QueryClient({
   defaultOptions: {
@@ -54,9 +56,18 @@ export default function App() {
           </Route>
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/:id/verify/:token" element={<EmailVerify />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
+
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        toastOptions={{
+          duration: 5000,
+        }}
+      />
     </QueryClientProvider>
   );
 }
